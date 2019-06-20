@@ -15,5 +15,21 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './public'),
     filename: 'bundle.js'
+  },
+  /**
+   * `devserver`是webpack配置中的一项，用于配置开发用的服务器，有了它，你就可以在浏览器监听你的代码的修改，并自动刷新显示修改后的结构，提高了开发的效率。它有如下配置项
+   * `contentBase`          默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录（本例设置到“public"目录）
+   * `port`                 设置默认监听端口，如果省略，默认为”8080“
+   * `inline`               设置为`true`，当源文件改变时会自动刷新页面
+   * `historyApiFallback`   在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为`true`，所有的跳转将指向index.html
+   * `proxy`                如果你有单独的后端开发服务器 API，并且希望在同域名下发送 API 请求 ，那么代理某些 URL 会很有用
+   */
+  devServer: {
+    // 本地服务器所加载的页面所在的目录
+    contentBase: './public',
+    // 404不跳转
+    historyApiFallback: true,
+    // 实时刷新
+    inline: true
   }
 }
